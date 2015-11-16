@@ -42,9 +42,8 @@ def reverse(str)
 
   len = str.length
 
-  (len/2).times do |i|
-    str[i], str[-1-i] = str[-1-i], str[i]
-  end
+
+
 
   return str
 end
