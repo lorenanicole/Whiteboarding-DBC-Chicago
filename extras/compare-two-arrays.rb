@@ -4,22 +4,27 @@ Compare two arrays and determine if they are equal.
 
 =end
 def compare_arrays(arr_one, arr_two)
-	comparison = {}
+	if arr_one.length != arr_two.length
+		return false
+	end
+
+	elem_frequency = {}
 	arr_one.each do |elem|
-		if comparison.has_key?(elem)
-			comparison[elem] += 1
+		if elem_frequency.has_key?(elem)
+			elem_frequency[elem] += 1
 		else
-			comparison[elem] = 1
+			elem_frequency[elem] = 1
 		end
 	end
 	arr_two.each do |elem|
-		if comparison.has_key?(elem)
-			comparison[elem] -= 1
+		if elem_frequency.has_key?(elem)
+			elem_frequency[elem] -= 1
 		else
-			comparison[elem] = 1
+			elem_frequency[elem] = 1
 		end
 	end
-	uneven_elems = comparison.select{|key,val| val != 0}
+
+	uneven_elems = elem_frequency.select{|key,val| val != 0}
 	uneven_elems.length == 0
 end
 
